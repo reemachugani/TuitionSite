@@ -1,0 +1,28 @@
+
+<div id="login">
+    <p>
+    <h3>Login</h3>
+    </p>
+
+    {% if user.is_authenticated %}
+
+    <p>You are logged in. To sign in with another username, <a href="{% url tuition.views.log_out %}">Logout</a>.</p>
+
+    {% else %}
+
+    <p>
+    {% if form.errors %}
+    <p class = "form_error">Error! Please complete the form with valid details.</p>
+    {% endif %}
+        <form method="post" action="{% url tuition.views.log_in %}">{% csrf_token %}
+            <label for="username">User name:</label>
+            <input type="text" name="username" value="" id="username">
+            <label for="password">Password: </label>
+            <input type="password" name="password" value="" id="password"><br>
+            <input id="loginButton" type="submit" value="Login" />
+        </form>
+    </p>
+
+    {% endif %}
+</div>
+

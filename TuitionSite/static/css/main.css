@@ -1,0 +1,332 @@
+
+body{
+    color: black;
+    position: relative;
+    font-family: "Trebuchet MS", sans-serif;
+    line-height: 140%;
+    background: url(../images/background.jpg) no-repeat fixed;
+    
+}
+
+a{
+    text-decoration: none;
+    color: #336600;
+    font-weight: bold;
+}
+
+#container{
+    margin: 0 auto;
+    width: 1000px;
+    background: #ffffff url(../images/green_header.jpg) no-repeat bottom;
+    color: black;
+    font-family: "Trebuchet MS", sans-serif;
+    line-height: 140%;
+}
+
+/* === header === */
+
+#container div#header{
+    background: #ffffff url(../images/green_header.jpg) no-repeat bottom; /* specify background here coz if bg changes in other inheriting tags header changes too. */
+    position: relative;
+    text-align: left;
+    height: 120px;
+    padding: 10px 0 0 15px;
+    color: white;
+}
+
+/* === sub menu === */
+
+#subMenu{
+    position: relative;
+    top: 30px;
+    left: 100px;
+}
+
+/* === content === */
+
+#container div#content{
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+/* ==== Contact Link ==== */
+
+#header div#contactButton{
+    position: absolute;
+    top: 10px;
+    right:10px;
+    /*left: 860px;*/
+}
+
+#contactButton a:link, #contactButton a:visited{
+    height: 25px;
+    width: 100px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    /*padding-top: 3px;*/
+    /*text-indent: -1100em;*/
+    /*background: url(../images/contactButton1.jpg) no-repeat;*/
+    background: url(../images/submenuButton.jpg) no-repeat top;
+    border: none;
+}
+
+#contactButton a:hover, #contactButton a:active{
+    color: black;
+    background: url(../images/button1.jpg) no-repeat right bottom;
+}
+
+/* === search box === */
+
+#search{
+    position: absolute;
+    bottom: 0;
+    left: 700px;
+}
+
+#search label, #search input{
+    bottom: 0;
+    height: 25px;
+    float: left;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    font-size: 14;
+    color: black;
+}
+
+#search input#go{
+    width: 40px;
+    padding: 0 20px;
+    line-height: 25px;
+    background-clip:border-box;
+    background: url(../images/button1.jpg) no-repeat left top;
+      /* Applying a default border radius of 8px */
+
+    -moz-border-radius:12px 0;
+    -webkit-border-radius:12px 0;
+    border-radius:12px 0;
+
+    /* A 1px highlight inside of the button */
+
+    -moz-box-shadow:0 0 2px #000 inset;
+    -webkit-box-shadow:0 0 2px #000 inset;
+    box-shadow:0 0 2px #000 inset;
+}
+
+/* ==== advanced search ==== */
+
+#header div#advancedSearch{
+    position: absolute;
+    top: 125px;
+    left: 780px;
+    font-size: 12px;
+    padding-top: 15px;
+}
+
+/* === Main menu === */
+
+#header div#mainMenu{
+    position: absolute;
+    /*top: 160px;*/
+    left: 280px;
+    bottom: 0;
+    /*z-index: 2;*/
+}
+
+#mainMenu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mainMenu li{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#mainMenu li a:link, #mainMenu li a:visited{
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    /*font-family: cursive;*/
+    display: block;
+    text-decoration: none;
+    padding: 0 20px;
+    margin-right: 10px;
+    line-height: 25px;
+    background: url(../images/button1.jpg) no-repeat left top;
+    background-clip:border-box;
+        /* Applying a default border radius of 8px */
+
+    -moz-border-radius:12px 0;
+    -webkit-border-radius:12px 0;
+    border-radius:12px 0;
+
+    /* A 1px highlight inside of the button */
+
+    -moz-box-shadow:0 0 2px #000 inset;
+    -webkit-box-shadow:0 0 2px #000 inset;
+    box-shadow:0 0 2px #000 inset;
+    /*border: none;*/
+    color: black;
+}
+
+#mainMenu li a:hover, #mainMenu li a:active{
+    background: #ffffff;
+}
+
+#mainMenu li a.current{
+    margin-top: -5px;
+    height:30px;
+    background: #ffffff;
+    line-height: 25px;
+}
+
+#mainMenu li a.current:hover{
+    cursor: default;
+}
+
+/* === user and user-group === */
+
+#header div#auth{
+    position: absolute;
+    top: 125px;
+    /*left: 200px;*/
+    line-height: 10px;
+    font-family: "Trebuchet MS", sans-serif;
+    color: black;
+}
+
+/*#auth hr.line1{*/
+    /*position: absolute;*/
+    /*color: black;*/
+    /*top:0;*/
+    /*float: left;*/
+/*}*/
+
+/*#auth hr.line2{*/
+    /*position: absolute;*/
+    /*color: black;*/
+    /*top:25px;*/
+    /*float: left;*/
+/*}*/
+
+/* === sub menu display === */
+
+#subMenu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#subMenu li{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#subMenu li a:link, #subMenu li a:visited{
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    padding: 0 20px;
+    margin-right: 10px;
+    line-height: 25px;
+    background: url(../images/green_header.jpg) no-repeat bottom;
+    background-clip:border-box;
+        /* Applying a default border radius of 8px */
+
+    -moz-border-radius:12px 0;
+    -webkit-border-radius:12px 0;
+    border-radius:12px 0;
+
+    /* A 1px highlight inside of the button */
+
+    -moz-box-shadow:0 0 2px #000 inset;
+    -webkit-box-shadow:0 0 2px #000 inset;
+    box-shadow:0 0 2px #000 inset;
+    color: white;
+}
+
+#subMenu li a:hover, #subMenu li a:active{
+    background: url(../images/submenuButton.jpg) no-repeat top;
+    color: white;
+}
+
+
+/* ==== main content ==== */
+
+#content div#mainContent{
+    margin-top: 50px;
+    float: left;
+    width: 600px;
+    margin-left: 40px;
+    padding: 20px 10px;
+}
+
+/* ==== side bar ==== */
+
+#content div#sideBar{
+    margin-top: 50px;
+    float: right;
+    width: 250px;
+    margin-right: 5px;
+    padding: 10px 5px;
+    text-align: center;
+    line-height: 50px;
+    border-left: solid #aaa 1px;
+}
+
+#sideBar div#login input#loginButton{
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    height: 25px;
+    width: 70px;
+    display: block;
+    margin: 10px 0 0 120px;
+    text-align: center;
+    color: white;
+    background-clip:border-box;
+    background: url(../images/green_header.jpg) no-repeat bottom;
+        /* Applying a default border radius of 8px */
+
+    -moz-border-radius:12px 0;
+    -webkit-border-radius:12px 0;
+    border-radius:12px 0;
+
+    /* A 1px highlight inside of the button */
+
+    -moz-box-shadow:0 0 2px #000 inset;
+    -webkit-box-shadow:0 0 2px #000 inset;
+    box-shadow:0 0 2px #000 inset;
+}
+
+
+/* === footer === */
+
+div#footer{
+    clear: both;
+    margin: 10px auto 0;
+    padding:  5px;
+    text-align: center;
+    background: #fff;
+    opacity: 0.8;
+    width: 400px;
+}
+
+#footer a{
+    text-decoration: none;
+    color: #336600;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 14px;
+}
+
+/* === miscellaneous style ===*/
+
+.clear{
+    clear: both;
+}
+

@@ -1,0 +1,33 @@
+{% extends "tuition/tutors.html" %}
+
+{% block content %}
+
+        {% ifequal user_group 'Tutor'%}
+
+        <h2> Jobs for Tutors </h2>
+       <div>
+      <table border='1' cellpadding='5'>
+          <tr>
+              <td><b>Name</b></td>
+              <td><b>Subjects to study</b></td>
+              <!-- <td><b>Advertisement</b></td> -->
+          </tr>
+          {% for job in jobs %}
+          <tr>
+              <td><a href="/tutors/tuteeProfile/{{job.pk}}">{{job.user.first_name}} {{job.user.last_name}}</a></td>
+              <td>{% for s in job.subject.all %}{{s.title}}, {% endfor %}</td>
+             <!-- <td>{{job.advertisement}}</td> -->
+          </tr>
+          {% endfor %}
+      </table>
+           </div>
+
+        {% else %}
+        <div> Only Tutors can access this...<br>
+            If you are a Tutor, <a href="/tutors/login/">Log in</a> to check out Jobs for yourself.<br>
+            If not a member, <a href="/tutors/register_tutor/">Register</a> as a Tutor for FREE to continue.
+        </div>
+
+        {% endifequal %}
+
+{% endblock %}

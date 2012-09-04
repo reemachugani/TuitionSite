@@ -1,0 +1,8 @@
+
+<div id="search">
+    <form action="/tuition/search/" method="GET">{% csrf_token %}
+        <label for="q">Search: </label>
+        <input type="text" name="q" value="{{ query|escape }}">
+        <input id="go" type="submit" value="GO">
+    </form>
+</div>

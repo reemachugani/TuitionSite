@@ -1,0 +1,46 @@
+{% extends "tuition/home.html" %}
+
+
+{% block content %}
+
+{% ifequal user_group 'Student' %}
+
+    <div>
+    {% if query %}
+        <h2>Results for "{{ query|escape }}":</h2>
+        {% if tutors %}
+            <table border='1' cellpadding='5'>
+               <tr>
+               <td><b>Name</td>
+               <td><b>School</td>
+               <td><b>Subjects</td>
+               <td><b>Race</td>
+               </tr></b>
+               {% for t in tutors %}
+               <tr>
+               <td><a href="/students/tutor/{{t.user.username}}/">{{t.user.first_name}} {{t.user.last_name}} </a></td>
+               <td>{% for s in t.school.all %}
+               {{s.school}}
+               {% endfor %}</td>
+               <td>{% for s in t.subject.all %}
+               {{s.title}},
+               {% endfor %}
+               </td>
+               <td>{% for s in t.race.all %}
+               {{s.race}}
+               {% endfor %}
+               </td>
+               </tr>
+               {% endfor %}
+            </table>
+        {% else %}
+            <p>No tutors found</p>
+        {% endif %}
+    {% endif %}
+    </div>
+
+{% else %}
+    <h3>Only Students are authorised to search.</h3>
+{% endifequal %}
+
+{% endblock %}

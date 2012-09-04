@@ -1,0 +1,102 @@
+{% extends "tuition/tutors.html" %}
+
+{% block title %} {{tutor.user.first_name}} {% endblock %}
+
+{% block content %}
+	<div><h3> {{tutor.user.first_name}} {{tutor.user.last_name}} </h3> </div>
+		<hr>
+	<table border='1' cellpadding='5'>
+	<tr>
+	<td><b>Name</td>
+	<td>{{tutor.user.first_name}} {{tutor.user.last_name}}</td>
+	</tr>
+	<tr>
+	<td><b>Sex</td>
+	<td>{{tutor.sex}}</td>
+	</tr>
+	<tr>
+	<td><b>Race</td>
+	<td>{% for s in tutor.race.all %}
+	{{s.race}}
+	{% endfor %}
+	</td>
+	</tr><tr>
+	<td><b>School</td>
+	<td>{% for s in tutor.school.all %}
+	{{s.school}}
+	{% endfor %}
+	</td>
+	</tr><tr>
+	<td><b>Year of Study</td>
+	<td>{% for s in tutor.year.all %}
+	{{s.year}}
+	{% endfor %}
+	</td>
+	</tr><tr>
+	<td><b>Subject(s)</td>
+	<td>{% for s in tutor.subject.all %}
+	{{s.title}}, 
+	{% endfor %}
+	</td>
+	</tr>
+	<tr>
+	<td><b>CGPA</td>
+	<td>{{tutor.cgpa}}</td>
+	</tr>
+    <tr>
+	<td><b>Proficient Areas</td>
+	<td>{{tutor.proficient_areas}}</td>
+	</tr>
+	<tr>
+	<td><b>Fees/hour/subject</td>
+	<td>{{tutor.fees_per_hour}}</td>
+	</tr>
+	<tr>
+	<td><b>Experience</td>
+	<td>{{tutor.experience}}</td>
+	</tr>
+	<tr>
+	<td><b>Days</td>
+	<td>{% for s in tutor.days.all %}
+	{{s.day}}, 
+	{% endfor %}</td>
+	</tr>
+	<tr>
+	<td><b>Time Slots</td>
+	<td>{% for s in tutor.time_slots.all %}
+	{{s.time_slot}}, 
+	{% endfor %}</td>
+	</tr>
+    <tr>
+	<td><b>Contact</td>
+	<td>{{tutor.user.email}}</td>
+	</tr>
+	</table>
+
+    	<!-- Feedbacks  -->
+{% if feedbacks %}
+    <p><b>FEEDBACKS:</b></p>
+{% endif %}
+
+{% for feedback in feedbacks %}
+
+    <div class="feedback">
+        <div class="time" >{{ feedback.username }} | {{ feedback.created }}</div>
+        <div class="year">Year: {% for y in feedback.year.all %} {{y.year}} {% endfor %}</div>
+        <div class="subjects">Subjects studied: {% for s in feedback.subjects_studied.all %} {{s.title}}, {% endfor %}</div>
+        <div class="body" id="feedback">{{ feedback.body|linebreaks }}</div>
+    </div>
+{% endfor %}
+
+<div id="addf"><b>Add a feedback:</b></div><br>
+<!-- Comment form  -->
+<form action="{% url TuitionSite.tuition.views.add_feedback tutor.user.username %}" method="POST">{% csrf_token %}
+    <div id="feedform">
+        Your Year of study: {{ form.year }}<br>
+        Subjects studied: {{ form.subjects_studied }}<br>
+        Comment: {{ form.body|linebreaks }}
+    </div>
+    <div id="submit"><input type="submit" value="Submit"></div>
+</form>
+
+	{% endblock %}

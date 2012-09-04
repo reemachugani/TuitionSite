@@ -1,0 +1,12 @@
+{% extends "tuition/students.html" %}
+{% block content %}
+<h3>Registration For Students</h3>
+<h4>Not a member? Register to sign in...</h4>
+<div id="form">
+<form method="post" action="">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+</div>{% endblock %}
+
+

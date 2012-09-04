@@ -1,0 +1,66 @@
+{% extends "tuition/tutors.html" %}
+
+{% block content %}
+<!-- for debug start-->
+    
+{% if user_group == 'Tutor'%}
+	<table border='1' cellpadding='5'>
+	<tr>
+	<td><b>Name</td> 
+	<td>{{tutor.user.username}}</td>
+	</tr>
+	<tr>
+	<td><b>Sex</td>
+	<td>{{tutor.sex}}</td>
+	</tr>
+	<tr>
+	<td><b>Email</td>
+	<td>{{tutor.email}}</td>
+	</tr>
+	<tr>
+	<td><b>Qualifications</td>
+	<td>{{tutor.qualification}}</td>
+	</tr>
+	<tr>
+	<td><b>Experience</td>
+	<td>{{tutor.experience}}</td>
+	</tr>
+	<tr>
+	<td><b>Subject(s)</td>
+	<td>{% for s in tutor.subject.all %}
+	{{s.title}}, 
+	{% endfor %}
+	</td>
+	</tr>
+	<tr>
+	<td><b>Teaching level</td>
+	<td>{{tutor.teaching_level}}</td>
+	</tr>
+	<tr>
+	<td><b>Fees/hour/subject</td>
+	<td>{{tutor.fees_per_hour}}</td>
+	</tr>
+	<tr>
+	<td><b>Preference</td>
+	<td>{{tutor.preference}}</td>
+	</tr>
+	<tr>
+	<td><b>Days</td>
+	<td>{% for s in tutor.days.all %}
+	{{s.day}}, 
+	{% endfor %}</td>
+	</tr>
+	<tr>
+	<td><b>Time Slots</td>
+	<td>{% for s in tutor.time_slots.all %}
+	{{s.time_slot}}, 
+	{% endfor %}</td>
+	</tr>
+	<tr>
+	<td><b>Address</td>
+	<td>{{tutor.address}}</td>
+	</tr>
+	</table>
+	
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- Navigation options -->
+
+<div id="mainMenu">
+    <ul>
+        <li><a href="/home/" class={{current_home}}>HOME</a></li>
+        <li><a href="/students/" class={{current_student}}>STUDENTS</a></li>
+        <li><a href="/tutors/" class={{current_tutor}}>TUTORS</a></li>
+
+    </ul>
+</div>
+
+{% if not do_not_show_nav %}
+<div id="auth">
+    <!--<hr width="1000" class="line1"/>-->
+	{% if user.is_authenticated %}
+	    <p class="user">Hi <b>{{ user.username }}</b>. You belong to <b>{{ user_group }}.</b>
+	    <a href="{% url tuition.views.log_out %}"> Logout.</a></p>
+
+	{% else %}
+	    <p class="user">Already a member? <a href="{% url tuition.views.log_in %}">Login</a>. Not a member? <a href="{% url tuition.views.register_student %}"> Register </a> for finding the best tuitions.
+	    </p>
+	{% endif %}    
+    <!--<hr width="1000" class="line2"/>-->
+</div>
+{%endif%}

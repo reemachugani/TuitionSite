@@ -1,0 +1,27 @@
+{% extends "tuition/students.html" %}
+
+{% block content %}
+
+{% if not user_group = "Student" %}
+
+    <h4>Guests are not allowed to advertize for a Tutor.</h4>
+    <p>If you are already a member, <a href="/users/login/">Sign in</a>.</p>
+    <p>If you are not a member, <a href="/students/register_student">Register</a> for FREE to advertize for a Tutor.</p>
+
+{% else %}
+
+<div> Are you sure?</div>
+        <p>If you click <b>Yes</b>, any advertisement submitted before will be deleted and only the current advertisement will be displayed.</p>
+        <p>Click <b>No</b> to redirect back to main.</p>
+
+<form action="" method="POST">{% csrf_token %}
+<input name="Yes" type="submit" value="Yes">
+</form>
+
+<form action="" method="POST">{% csrf_token %}
+<input name="No" type="submit" value="No">
+</form>
+
+{% endif %}
+
+{% endblock %}

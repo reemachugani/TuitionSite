@@ -1,0 +1,56 @@
+{% extends "tuition/home.html" %}
+
+
+{% block content %}
+
+        {% ifequal user_group 'Student' %}
+            {% if post %}
+                {% if empty %}
+                    <h3>Fill in atleast one field to check the matching tutors!</h3>
+                    <p><a href="{% url TuitionSite.tuition.views.advanced_search %}">Search again</a></p>
+                {% else %}
+                    <h2>Matched Results:</h2>
+                    {% if tutors %}
+                        <table border='1' cellpadding='5'>
+                           <tr>
+                           <td><b>Name</td>
+                           <td><b>School</td>
+                           <td><b>Subjects</td>
+                           <td><b>Race</td>
+                           </tr></b>
+                           {% for t in tutors %}
+                           <tr>
+                           <td><a href="/students/tutor/{{t.user.username}}/">{{t.user.first_name}} {{t.user.last_name}} </a></td>
+                           <td>{% for s in t.school.all %}
+                           {{s.school}}
+                           {% endfor %}</td>
+                           <td>{% for s in t.subject.all %}
+                           {{s.title}},
+                           {% endfor %}
+                           </td>
+                           <td>{% for s in t.race.all %}
+                           {{s.race}}
+                           {% endfor %}
+                           </td>
+                           </tr>
+                           {% endfor %}
+                        </table>
+                    {% else %}
+                        <h3>Sorry! No tutors with the specified details found. </h3>
+                    {% endif %}
+                {% endif %}
+            {% else %}
+                <h3>Advanced Search</h3>
+                <div id="content">
+                    <form method="post" action="">{% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Advanced Search" />
+                    </form>
+                </div>
+            {% endif %}
+
+        {% else %}
+            <h3>Only Students are authorised to search for Tutors.</h3>
+        {% endifequal %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "tuition/tutors.html" %}
+
+{% block content %}
+
+        <h3>{{tutee.user.first_name}} {{tutee.user.last_name}}</h3>
+        <div>
+           <b>Name :</b> {{tutee.user.first_name}} {{tutee.user.last_name}} <br>
+           <b>Email :</b> {{tutee.user.email}}<br>
+           <b>Subjects to study :</b> {% for s in tutee.subject.all %} {{s.title}}, {% endfor %}<br>
+           <b>Requirements :</b> {{tutee.advertisement}}<br>
+        </div>
+
+{% endblock %}

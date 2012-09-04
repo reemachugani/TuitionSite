@@ -1,0 +1,59 @@
+<head>
+	<title>{% block title %} {% endblock %}</title>
+
+		{% block css %}<link rel="stylesheet" href="{{MEDIA_URL}}css/main.css">{% endblock %}
+</head>
+
+<body>
+    <div id="container">
+
+        <div id="header" align="center"> <h1> Tuition Finder </h1><h3>Your search ends here!</h3>
+
+            <div id="contactButton">
+                <a href="/contact_us/" title="Contact us">Contact Us</a>
+            </div>
+
+            {% include 'tuition/searchForm.html' %}
+
+            <div id="advancedSearch"><a href="{% url TuitionSite.tuition.views.advanced_search %}">Advanced Search</a></div>
+
+            {% include 'tuition/nav.html' %}
+
+        </div>
+
+        <!--<div id = "user_group">{% block header %} {% endblock %}</div>-->
+
+        <div id = "subMenu" >{% block nav %} {% endblock %} </div>
+
+        <div id="content">
+
+            <div id = "sideBar"> {% include 'tuition/log_in.html' %} </div>
+
+            <div id = "mainContent" >
+                {% block content %} {% endblock %}
+            </div>
+
+            <p class="clear" />
+
+            <div id = "pagination">{% block pagination %} {% endblock %}</div>
+
+
+        </div>
+
+     </div>
+
+    <div id = "footer">
+
+        <a href="/about_us/">About Us</a> &nbsp; | &nbsp;
+        <a href="/privacy_policy/">Privacy Policy</a> &nbsp; | &nbsp;
+        <a href="/contact_us/">Contact Us</a> &nbsp; | &nbsp;
+        <a href="/site_map/">Site Map</a>
+
+      {% block footer %} {% endblock %}
+    </div>
+
+  <script src="script.js" type="text/javascript"/>
+
+</body>
+
+</html>

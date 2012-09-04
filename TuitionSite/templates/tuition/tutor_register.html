@@ -1,0 +1,40 @@
+{% extends "tuition/tutors.html" %}
+{% block content %}
+
+{% if not authentic %}
+<p> You are not authorized to register as a Tutor </p>
+
+{% else %}
+
+   {% if success %}
+        <h3>Congratulations! You have been successfully registered as a Tutor.</h3>
+  {% else %}
+<div id="form">
+
+<form method="post" action=".">{% csrf_token %}
+{{ uform.as_p }}
+{{ tform.as_p }}
+<input type="submit" value="Submit"/>
+</form>
+<!--
+{% if valid %}
+
+<div>
+
+<form method="post" action="">{% csrf_token %}
+{{ tform.as_p }}
+<input type="submit" value="Submit"/>
+</form>
+
+</div>
+
+{% endif %}
+-->
+</div>
+     {% endif %}
+        
+{% endif %}
+
+{% endblock %}
+
+

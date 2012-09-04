@@ -1,0 +1,29 @@
+{% extends "tuition/students.html" %}
+
+{% block content %}
+
+ {% ifequal user_group 'Student' %}
+
+ {% if success %}
+        <h3><u>Your details as seen by the Tutors</u></h3>
+        <br><b>Name:</b> {{first_name}} {{last_name}}
+        <br><b>Email:</b> {{email}}
+        <br><b>Subject:</b> {% for s in subject.all %} {{s.title}}, {% endfor %}
+        <br><b>Advertisement:</b> {{advertisement}}
+
+ {% else %}
+
+<h3>Advertise for a Tutor</h3>
+
+<div id="content">
+<form method="post" action="">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+</div>
+
+{% endif %}
+
+{% endifequal %}
+
+{% endblock %}
